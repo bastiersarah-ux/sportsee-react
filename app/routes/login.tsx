@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import type { LoginForm, TokenResponse } from "~/models/authentication";
+import type { ErrorServer } from "~/models/common";
+
+export const tokenKey = "auth-key";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("auth-key")) {
+    if (localStorage.getItem(tokenKey)) {
       navigate("/");
     }
   }, [navigate]);
@@ -26,41 +30,31 @@ const Login = () => {
       body: JSON.stringify({
         username: email,
         password: password,
-      }),
+      } as LoginForm),
     });
 
     if (!res.ok) {
-      const error: { message: string } = await res.json();
+      const error: ErrorServer = await res.json();
       alert(error.message);
       return;
     }
 
-    const data: { token: string; userId: string } = await res.json();
-    localStorage.setItem("auth-key", data.token);
+    const data: TokenResponse = await res.json();
+    localStorage.setItem(tokenKey, data.token);
 
     navigate("/");
-
-    // if (email === "test@test.com" && password === "1234") {
-    //   navigate("/dashboard");
-    // } else {
-    //   alert("Identifiants incorrects");
-    // }
   };
 
   return (
-    <div>
+    <main>
       <section>
-        <div>
-          <h1>SPORTSEE</h1>
-        </div>
-
-        <div>
+        <div className="card">
           <header>
             <h2>Transformez vos stats en résultats</h2>
             <p>Se connecter</p>
           </header>
 
-          <form onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">Adresse email</label>
               <input
@@ -97,7 +91,7 @@ const Login = () => {
           atteignez vos objectifs.
         </span>
       </section>
-    </div>
+    </main>
   );
 };
 

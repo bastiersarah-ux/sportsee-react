@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.nav {
+    background-color: white;
+    height: 100%;
+    padding: 16px 48px;
+    min-height: unset;
+    gap: 10px;
+    display: flex;
+    border-radius: 40px;
+    font-size: 14px;
+}
+
+.linkblue {
+    color: var(--tokenSurfaceBlue);
+}
