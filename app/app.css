@@ -7,6 +7,7 @@
   --tokensSurfaceLightBleu: #B6BDFC;
   --tokensSurfaceOrange: #F4320B;
   --TokensSurfaceLightOrange: #FCC1B6;
+  --TokensTypographiePrimary: #111111;
   --TokensTypographieSecondary: #707070;
 }
 
@@ -98,6 +99,12 @@ h2 {
   ;
 }
 
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--TokensTypographieSecondary);
+}
+
 
 .card {
   display: flex;
@@ -118,5 +125,47 @@ a,
   &:hover {
     font-weight: 600;
     text-decoration: underline;
+  }
+}
+
+.dashboard-card {
+  min-width: 450px;
+  min-height: 350px;
+  background: var(--color-base-100);
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+
+    .title-subtitle {
+      h3 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--TokensTypographieSecondary);
+      }
+    }
+
+    .date-range-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+
+      button {
+        border-color: #717171;
+        color: #717171;
+      }
+    }
   }
 }

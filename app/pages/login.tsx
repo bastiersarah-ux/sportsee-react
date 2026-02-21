@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
-    const serverUrl = "http://localhost:8000";
+    const serverUrl = import.meta.env.VITE_API_URL;
 
     const res = await fetch(`${serverUrl}/api/login`, {
       method: "POST",

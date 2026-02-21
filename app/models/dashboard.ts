@@ -28,6 +28,7 @@ export type ProfileInfo = {
   weight: number;
   height: number;
   profilePicture: string;
+  weeklyGoal: number;
   gender: "female" | "male";
 };
 

@@ -14,7 +14,7 @@ const Dashboard = () => {
   const userContext = useContext(UserContext);
 
   return (
-    <>
+    <div className="flex flex-col gap-27 px-18">
       <UserCard user={userContext.user} />
       <div className="flex flex-col gap-8">
         <h1>Vos dernières performances</h1>
@@ -24,7 +24,7 @@ const Dashboard = () => {
         </div>
       </div>
       <Goals />
-    </>
+    </div>
   );
 };
 

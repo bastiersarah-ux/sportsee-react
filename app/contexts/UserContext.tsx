@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import type { UserInfo } from "~/models/dashboard";
 import ErrorPage from "~/pages/error";
@@ -13,7 +13,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState<string | null>(null);
   const location = useLocation();
 
-  const serverUrl = "http://localhost:8000";
+  const serverUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     setLoading(true);
@@ -54,8 +54,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     fetchData();
   }, [location.pathname]);
 
-  if (loading)
-    return <span className="loading loading-spinner loading-xl"></span>;
+  if (loading) return <span className="loading loading-spinner loading-xl"></span>;
   if (error)
     return (
       <>
@@ -63,7 +62,5 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       </>
     );
 
-  return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
-  );
+  return <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>;
 }
