@@ -15,8 +15,8 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: #F2F3FF;
-  --color-base-200: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #F2F3FF;
   --color-base-300: #b6bdfc;
   --color-base-content: oklch(21% 0.006 285.885);
   --color-primary: #0B23F4;
@@ -103,4 +103,8 @@ h2 {
   display: flex;
   flex-direction: column;
   border: 10px;
+}
+
+.label {
+  font-size: 14px;
 }

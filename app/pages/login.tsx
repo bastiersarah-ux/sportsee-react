@@ -47,52 +47,49 @@ const Login = () => {
   };
 
   return (
-    <main>
-      <section>
-        <div className="card">
-          <header>
-            <h2>Transformez vos stats en résultats</h2>
-            <p>Se connecter</p>
-          </header>
+    <div className="flex">
+      <section className={styles["left-section"]}>
+        <img src="/img/logo-sportsee.svg" alt="Sportsee logo" className={styles["logo"]} />
+        <div>
+          <div className="card bg-white w-[75%] rounded-[20px] p-10 pb-20 gap-10">
+            <h1>Transformez vos&nbsp;stats en résultats</h1>
 
-          <form className="form" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Adresse email</label>
-              <input
-                id="email"
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+              <h2>Se connecter</h2>
+              <fieldset className="fieldset">
+                <label className="label" htmlFor="email">
+                  Adresse email
+                </label>
+                <input id="email" type="text" className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </fieldset>
 
-            <div>
-              <label htmlFor="password">Mot de passe</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+              <fieldset className="fieldset">
+                <label htmlFor="password" className="label">
+                  Mot de passe
+                </label>
+                <input
+                  id="password"
+                  className="input"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </fieldset>
+              <button className="btn btn-primary w-full rounded-[10px] mt-4" type="submit">
+                Se connecter
+              </button>
+            </form>
 
-            <button type="submit">Se connecter</button>
-
-            <div>
-              <Link to="/forgot-password">Mot de passe oublié ?</Link>
-            </div>
-          </form>
+            <Link to="/forgot-password">Mot de passe oublié ?</Link>
+          </div>
         </div>
       </section>
 
-      <section>
-        <img src="/public/img/marathon.svg" alt="Course marathon" />
-        <span>
-          Analysez vos performances en un clin d’œil, suivez vos progrès et
-          atteignez vos objectifs.
-        </span>
+      <section className={styles["right-section"]}>
+        <img className="w-202" src="/public/img/marathon.svg" alt="Course marathon" />
+        <span>Analysez vos performances en un clin d’œil, suivez vos progrès et atteignez vos objectifs.</span>
       </section>
-    </main>
+    </div>
   );
 };
 
