@@ -58,7 +58,6 @@
 html,
 body {
   background-color: var(--background-app);
-  @apply dark:bg-gray-950;
   height: 100vh;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -68,10 +67,6 @@ body {
   color: #111111;
   overflow-x: hidden;
 
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
 
   main {
     padding-inline: 150px;
