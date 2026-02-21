@@ -2,9 +2,10 @@
 
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { tokenKey } from "~/routes/login";
+import { tokenKey } from "~/pages/login";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
+import { UserProvider } from "~/contexts/UserContext";
 
 export default function DefaultLayout() {
   const navigate = useNavigate();
@@ -17,9 +18,11 @@ export default function DefaultLayout() {
 
   return (
     <>
-      <Header />
       <main>
-        <Outlet />
+        <Header />
+        <UserProvider>
+          <Outlet />
+        </UserProvider>
       </main>
       <Footer />
     </>

@@ -2,21 +2,25 @@
     display: flex;
     align-items: center;
     gap: 24px;
-
     padding: 16px 24px;
-    background: linear-gradient(white, var(--background-app));
-    ;
     border-radius: 10px;
+    background: var(--color-base-200);
+    flex-direction: row;
+    justify-content: space-between;
+
+    &.gradient {
+        background: linear-gradient(white, var(--color-base-100));
+    }
 }
 
 .card-avatar {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-radius: 8px;
     object-fit: cover;
 }
 
-.card.info h3 {
+.card.info {
     margin: 0;
     font-size: 16px;
 }
@@ -26,9 +30,12 @@
     font-size: 12px;
 }
 
-.card.blue {
+.card-blue {
     margin-left: auto;
-    font-size: 12px;
-    background-color: #0B23F4;
-
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+    padding: 1.5rem;
+    border-radius: 10px;
 }

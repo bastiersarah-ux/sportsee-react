@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { tokenKey } from "~/routes/login";
+import { tokenKey } from "~/pages/login";
 import styles from "./Footer.module.css";
 
 const Footer = () => {

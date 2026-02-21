@@ -32,7 +32,8 @@ export default function HeartRateChart() {
   return (
     <div
       style={{
-        width: "100%",
+        minWidth: 450,
+        flex: 1,
         height: 350,
         background: "#FFFFFF",
         padding: 20,

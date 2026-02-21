@@ -1,13 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
 :root {
-  --background-app: #F2F3FF;
+  --background-app: #f2f3ff;
   --tokenSurfaceBlue: #0B23F4;
   --tokensSurfaceLightBleu: #B6BDFC;
   --tokensSurfaceOrange: #F4320B;
@@ -15,26 +10,97 @@
   --TokensTypographieSecondary: #707070;
 }
 
+@plugin "daisyui/theme" {
+  name: "sportsee";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: #F2F3FF;
+  --color-base-200: #ffffff;
+  --color-base-300: #b6bdfc;
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-primary: #0B23F4;
+  --color-primary-content: oklch(93% 0.034 272.788);
+  --color-secondary: #F4320B;
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+
+
+
 html,
 body {
   background-color: var(--background-app);
   @apply dark:bg-gray-950;
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   width: 100vw;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   color: #111111;
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    border: 10px;
-  }
+  overflow-x: hidden;
 
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+
+  main {
+    padding-inline: 150px;
+    padding-top: 35px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 108px;
+    padding-bottom: 80px;
+  }
+}
+
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #111111;
+  font-size: 22px;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--TokensTypographieSecondary);
+  font-size: 14px;
+  ;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 10px;
 }

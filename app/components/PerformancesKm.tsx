@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
 import {
   BarChart,
@@ -8,7 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { tokenKey } from "~/routes/login";
+import { DateRange } from "~/models/common";
+import { tokenKey } from "~/pages/login";
 
 const data = [
   { week: "S1", km: 20 },
@@ -19,7 +21,7 @@ const data = [
 
 export default function MyBarChart() {
   const [userActivity, setUserActivity] = useState();
-  const [dateEnd, setDateEnd] = useState(new Date());
+  const [dateRange, setDateRange] = useState(new DateRange(4, "week"));
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,7 +34,7 @@ export default function MyBarChart() {
 
       try {
         const res = await fetch(
-          `${serverUrl}/api/user-activity?startWeek=2025-01-04&endWeek=2025-03-08`,
+          `${serverUrl}/api/user-activity?startWeek=${dateRange.start}&endWeek=${dateRange.end}`,
           {
             method: "GET",
             headers: {
@@ -58,9 +60,20 @@ export default function MyBarChart() {
     };
 
     fetchData();
-  }, []);
+  }, [dateRange]);
 
-  //  dayjs(dateEnd).subtract(4, "week");
+  const substractWeeks = () => {
+    const newDate = dayjs(dateRange.start).toDate();
+    setDateRange(new DateRange(4, "week", newDate));
+  };
+
+  const addWeeks = () => {
+    let newDate = dayjs(dateRange.end).add(4, "week").toDate();
+    if (newDate > new Date()) {
+      newDate = new Date();
+    }
+    setDateRange(new DateRange(4, "week", newDate));
+  };
 
   if (loading) {
     return <></>;
@@ -68,12 +81,21 @@ export default function MyBarChart() {
 
   return (
     <div
+      className="card"
       style={{
-        width: "100%",
-        height: 300,
+        minWidth: 450,
+        flex: 1,
+        height: "350px",
         background: "#FFFFFF",
+        padding: 20,
+        borderRadius: 16,
       }}
     >
+      <h3 style={{ margin: 0, color: "#ff3b30" }}>18Km en moyenne</h3>
+      <p style={{ marginTop: 4, color: "#777" }}>
+        Total des kilomètres 4 dernières semaines
+      </p>
+
       <ResponsiveContainer>
         <BarChart
           data={data}

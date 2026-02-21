@@ -1,28 +1,24 @@
-import type { Route } from "./+types/dashboard";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router";
 import type { UserInfo } from "~/models/dashboard";
-import { tokenKey } from "./login";
-import dayjs from "dayjs";
-import PerformancesKm from "~/components/PerformancesKm";
-import PerformancesBpm from "~/components/PerformancesBpm";
-import Goals from "~/components/Goals";
-import UserCard from "~/components/UserCard";
+import ErrorPage from "~/pages/error";
+import { tokenKey } from "~/pages/login";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Dashboard" },
-    { name: "description", content: "Bienvenue sur votre dashboard" },
-  ];
-}
+export const UserContext = createContext<{ user?: UserInfo }>({});
 
-const Dashboard = () => {
-  const [userProfile, setUserProfile] = useState<UserInfo>();
+export function UserProvider({ children }: { children: React.ReactNode }) {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<UserInfo>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const location = useLocation();
 
   const serverUrl = "http://localhost:8000";
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+
     const fetchData = async () => {
       const token = localStorage.getItem(tokenKey);
       if (!token) return;
@@ -37,13 +33,17 @@ const Dashboard = () => {
         });
 
         if (!res.ok) {
+          if (res.status == 401) {
+            navigate("/login");
+            return;
+          }
           const errorData: { message: string } = await res.json();
           setError(errorData.message);
           return;
         }
 
         const data: UserInfo = await res.json();
-        setUserProfile(data);
+        setUser(data);
       } catch (err) {
         setError("Erreur de connexion au serveur");
       } finally {
@@ -52,19 +52,18 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, []);
+  }, [location.pathname]);
 
-  if (loading) return <p>Chargement...</p>;
-  if (error) return <p>Erreur: {error}</p>;
+  if (loading)
+    return <span className="loading loading-spinner loading-xl"></span>;
+  if (error)
+    return (
+      <>
+        <ErrorPage error={error} />
+      </>
+    );
 
   return (
-    <>
-      <UserCard user={userProfile} />
-      <PerformancesKm />
-      <PerformancesBpm />
-      <Goals />
-    </>
+    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
   );
-};
-
-export default Dashboard;
+}

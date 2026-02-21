@@ -1,0 +1,55 @@
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "card1 card2"
+        "card3 card2";
+
+    column-gap: 2rem;
+    row-gap: 1rem;
+
+
+    .user-card {
+        grid-area: card1;
+    }
+
+    .profile-info {
+        grid-area: card3;
+
+    }
+
+    .card-profile {
+        padding-top: 40px;
+        padding-bottom: 60px;
+        padding-inline: 28px;
+    }
+
+    .profile-typo {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        color: var(--TokensTypographieSecondary);
+        font-size: 16px;
+        ;
+    }
+
+    li {
+        margin-bottom: 24px;
+    }
+
+    .statistics {
+        grid-area: card2;
+    }
+}
+
+.statistic-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 1rem;
+
+    grid-template-areas:
+        "card1 card2"
+        "card3 card4"
+        "card5";
+}
