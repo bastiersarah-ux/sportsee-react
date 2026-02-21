@@ -108,3 +108,15 @@ h2 {
 .label {
   font-size: 14px;
 }
+
+a,
+.btn-link {
+  user-select: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}

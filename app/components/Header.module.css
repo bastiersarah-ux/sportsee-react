@@ -16,6 +16,14 @@
     font-size: 14px;
 }
 
+.separator {
+
+    &::after,
+    &::before {
+        width: 1px;
+    }
+}
+
 .linkblue {
     color: var(--tokenSurfaceBlue);
 }

@@ -8,6 +8,12 @@
     flex-direction: row;
     justify-content: space-between;
 
+    &.profile {
+        padding-block: 24px;
+        padding-right: 52px;
+        padding-left: 32px;
+    }
+
     &.gradient {
         background: linear-gradient(white, var(--color-base-100));
     }

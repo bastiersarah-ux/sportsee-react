@@ -1,24 +1,17 @@
-import styles from "./UserCard.module.css";
 import type { UserInfo } from "../models/dashboard";
+import styles from "./UserCard.module.css";
 
 type UserCardProps = {
   user?: UserInfo;
-  showDistance?: boolean;
-  useGradient?: boolean;
+  isProfile?: boolean;
 };
 
-const UserCard = ({ user, showDistance, useGradient }: UserCardProps) => {
+const UserCard = ({ user, isProfile }: UserCardProps) => {
   return (
     user && (
-      <div
-        className={`${styles.card} card ${useGradient ? styles.gradient : ""}`}
-      >
+      <div className={`${styles.card} card ${!isProfile ? styles.gradient : ""}`}>
         <div className="flex items-center gap-6">
-          <img
-            src={user?.profile.profilePicture}
-            alt={user?.profile.firstName}
-            className={styles["card-avatar"]}
-          />
+          <img src={user?.profile.profilePicture} alt={user?.profile.firstName} className={styles["card-avatar"]} />
           <div className={styles["card-info"]}>
             <h1>
               {user?.profile.firstName} {user?.profile.lastName}
@@ -33,12 +26,10 @@ const UserCard = ({ user, showDistance, useGradient }: UserCardProps) => {
             </h2>
           </div>
         </div>
-        {showDistance && (
+        {!isProfile && (
           <div className="flex items-center gap-3">
             <h2>Distance totale parcourue :</h2>
-            <div className={styles["card-blue"]}>
-              {user?.statistics.totalDistance} km
-            </div>
+            <div className={styles["card-blue"]}>{user?.statistics.totalDistance} km</div>
           </div>
         )}
       </div>

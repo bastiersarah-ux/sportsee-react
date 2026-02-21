@@ -16,6 +16,8 @@ export type Statistics = {
   totalDistance: string;
   totalSessions: number;
   totalDuration: number;
+  totalcaloriesBurned: number;
+  totalDayOff: number;
 };
 
 export type ProfileInfo = {
