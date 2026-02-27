@@ -128,16 +128,16 @@ export default function PerformancesKm() {
     <div className="dashboard-card">
       <div className="header">
         <div className="title-subtitle">
-          <h3 className="text-secondary">
+          <h3 className="text-primary">
             {loading ? (
               <>
                 Calcul en cours<span className="loading loading-dots loading-xs ml-2"></span>
               </>
             ) : (
-              `${Math.round(moyenneKm * 10) / 10} Km`
+              `${Math.round(moyenneKm * 10) / 10} km en moyenne`
             )}
           </h3>
-          <p>Kilomètres en moyenne par semaine</p>
+          <p>Total des kilomètres 4 dernières semaines</p>
         </div>
         <div className="date-range-selector">
           <button

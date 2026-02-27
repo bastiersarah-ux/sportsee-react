@@ -86,10 +86,10 @@ export default function PerformancesBpm() {
   }, [dateRange]);
 
   function substractWeek() {
-    const newStart = new Date(dateRange.start);
+    let newStart = new Date(dateRange.start);
     newStart.setDate(newStart.getDate() - 7);
 
-    if (newStart < minDate) return;
+    if (newStart < minDate) newStart = minDate;
 
     const newEnd = new Date(newStart);
     newEnd.setDate(newStart.getDate() + 6);
@@ -101,10 +101,10 @@ export default function PerformancesBpm() {
     const newStart = new Date(dateRange.start);
     newStart.setDate(newStart.getDate() + 7);
 
-    const newEnd = new Date(newStart);
+    let newEnd = new Date(newStart);
     newEnd.setDate(newStart.getDate() + 6);
 
-    if (newEnd > maxDate) return;
+    if (newEnd > maxDate) newEnd = maxDate;
 
     setDateRange(DateRange.fromDates(newStart, newEnd));
   }

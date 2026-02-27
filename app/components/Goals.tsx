@@ -105,7 +105,7 @@ export default function Goal() {
       <g>
         <circle cx={x - 14} cy={y} r={4} fill="#0B23F4" />
         <text x={x} y={y} fill="#333" fontSize={12} dominantBaseline="central">
-          {completed} réalisées
+          {completed} réalisée(s)
         </text>
       </g>
     );
@@ -113,13 +113,13 @@ export default function Goal() {
 
   const renderRemainingLabel = ({ cx, cy, outerRadius }: any) => {
     // Position fixe à droite du pie
-    const x = cx + outerRadius + 20;
+    const x = cx + outerRadius + 5;
     const y = cy - 60;
     return (
       <g>
         <circle cx={x - 14} cy={y} r={4} fill="#B6BDFC" />
         <text x={x} y={y} fill="#333" fontSize={12} dominantBaseline="central">
-          {remaining} restants
+          {remaining} restant(s)
         </text>
       </g>
     );
