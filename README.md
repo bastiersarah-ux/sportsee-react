@@ -1,87 +1,86 @@
-# Welcome to React Router!
+# SportSee – Dashboard de suivi sportif
 
-A modern, production-ready template for building full-stack React applications using React Router.
+💡 **Important**
+Le serveur à utiliser **n’est pas** l’URL suivante :
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
+```
+https://github.com/OpenClassrooms-Student-Center/P6JS/
 ```
 
-### Development
+Un **fork** du projet a été créé afin de corriger certains problèmes liés aux données. Utilisez donc ce dépôt comme backend :
 
-Start the development server with HMR:
+👉 `https://github.com/bastiersarah-ux/P6JS`
+
+## 🚀 Présentation
+
+Ce dépôt contient l’application frontend développée avec **React + TypeScript**. Elle s’appuie sur React Router pour la navigation et interagit avec le backend mentionné ci-dessus pour récupérer les profils utilisateurs et leurs statistiques.
+
+## 📦 Installation
+
+1. Cloner ce dépôt :
+   ```bash
+   git clone https://github.com/bastiersarah-ux/sportsee-react.git
+   cd sportsee-react
+   ```
+2. Installer les dépendances :
+   ```bash
+   npm install
+   ```
+
+## 🔧 Développement
+
+Lancer le serveur de développement avec HMR :
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+L’application est disponible sur : `http://localhost:4000`.
 
-## Building for Production
+> **N’oubliez pas** de démarrer également le backend depuis le fork mentionné ci‑dessus.
 
-Create a production build:
+### Utiliser une API mockée
+
+Pour les tests ou le développement sans serveur réel, un mock des données peut être utilisé. Contrôlez l’URL de l’API via les fichiers d’environnement :
+
+- `.env.development` : `VITE_API_URL` pointe par défaut vers `http://localhost:8000` (backend réel).
+- `.env.test` : laissez vide ou mettez l’URL du service de mock (avec Postman par exemple).
+
+Un script est également prévu pour lancer le projet en mode test :
+
+```bash
+npm run dev:test
+```
+
+Cela démarre Vite en mode `test` et active l’API mock (assurez-vous de configurer la variable d’environnement avant de lancer).
+
+Vous pouvez basculer rapidement entre le backend réel et le mock en éditant ces fichiers ou en ajoutant une nouvelle configuration si nécessaire.
+
+## 📦 Build de production
+
+Pour générer les fichiers de production :
 
 ```bash
 npm run build
 ```
 
-## Deployment
+Récupérez ensuite les dossiers `build/client` et `build/server` pour déployer.
 
-### Docker Deployment
+## 🐳 Docker (optionnel)
 
-To build and run using Docker:
+Construire et lancer le conteneur :
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+docker build -t sportsee-react .
+docker run -p 3000:3000 sportsee-react
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Utilisable sur n’importe quelle plateforme supportant Docker.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## 🎨 Styling
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Le projet est configuré avec **[Tailwind CSS](https://tailwindcss.com/)** et **[DaisyUI](https://daisyui.com/)**.
 
 ---
 
-Built with ❤️ using React Router.
+✨ Bonne continuation avec le dashboard SportSee !

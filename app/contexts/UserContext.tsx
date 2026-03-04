@@ -33,7 +33,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         });
 
         if (!res.ok) {
-          if (res.status == 401) {
+          if ([401, 403].includes(res.status)) {
+            localStorage.removeItem(tokenKey);
             navigate("/login");
             return;
           }
@@ -54,7 +55,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     fetchData();
   }, [location.pathname]);
 
-  if (loading) return <span className="loading loading-spinner loading-xl"></span>;
+  if (loading)
+    return <span className="loading loading-spinner loading-xl"></span>;
   if (error)
     return (
       <>
@@ -62,5 +64,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       </>
     );
 
-  return <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+  );
 }
